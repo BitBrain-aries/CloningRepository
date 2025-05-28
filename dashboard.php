@@ -15,6 +15,7 @@ if (!isset($_SESSION['username'])) {
                 align-items: center;
                 height: 100vh;
             }
+            
         </style>
     </head>
     <body>
