@@ -9,18 +9,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['username'] = $username;
         header("Location: dashboard.php");
     }
-    // Ambil username dari session
-$username = $_SESSION['username'];
-
-// Buat nama file counter khusus per user
-$filename = "logins_{$username}.txt";
-
-// Baca login count dari file, atau mulai dari 0
-if (file_exists($filename)) {
-    $loginCount = (int)file_get_contents($filename);
-} else {
-    $loginCount = 0;
-}
+    
 }
 ?>
 <html>
