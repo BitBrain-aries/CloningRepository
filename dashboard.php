@@ -44,5 +44,5 @@ file_put_contents($file, $count);
     <body>
         <h1><?php echo "Selamat datang " . $username . " ke-" . $count  ; ?></h1>
 
-    </body>
+   </body>
 </html>
