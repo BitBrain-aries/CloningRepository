@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    // User is already logged in, redirect to welcome page  
+   
     header("Location: login.php");
 
     exit();
@@ -9,18 +9,12 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
-
-// Buat nama file untuk menyimpan jumlah login per user
 $file = "login_count_{$username}.txt";
-
-// Cek apakah file sudah ada, jika ya ambil isinya, kalau belum mulai dari 0
 if (file_exists($file)) {
     $count = (int)file_get_contents($file);
 } else {
     $count = 0;
 }
-
-// Tambah 1 setiap kali halaman dibuka
 $count++;
 
 // Simpan kembali ke file
@@ -99,7 +93,7 @@ if(isset($_POST["nama"]) && isset($_POST["umur"])){
             </tr>
             <tr>
                 <td>Umur</td>
-                <td><input type="text" name="umur" /></td>
+                <td><input type="number" name="umur" /></td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center;">
@@ -110,17 +104,31 @@ if(isset($_POST["nama"]) && isset($_POST["umur"])){
                 </td>
             </tr>
         </table>
-        <table>
+        <table border "1">
             <tr>
                 <td>Nama</td>
                 <td>Umur</td>
+                <td>keterangan</td>
             </tr>
+            
                 <?php foreach($_SESSION["daftar"] as $daftar): ?>
                  <tr>
                     <td><?php echo $daftar["nama"] ?></td>
                     <td><?php echo $daftar["umur"] ?></td>
+                    <td><?php
+                    if ($daftar["umur"] < 20){
+                        echo "Remaja";        
+                    }elseif($daftar["umur"] >= 20 && $dafrar_item["umur"] < 40){
+                        echo "Dewasa";
+                    }elseif($daftar["umur"] >= 40){
+                        echo "Tua";
+                    }else{
+                        echo "tidak diketahui"; // INI TIDAK PERNAH TERPANGGIL
+                    }
+                    ?></td>
                  </tr>
                  <?php endforeach; ?>
+
         </table>
         </form>
     </body>
